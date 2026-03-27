@@ -1,7 +1,7 @@
-package unit04.structure;
+package unit04.structure.data;
 
-import java.util.HashSet;
-import java.util.Set;
+import unit04.structure.sorting.Student;
+
 import java.util.TreeSet;
 
 public class SetExample {

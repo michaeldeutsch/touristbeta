@@ -1,4 +1,4 @@
-package unit04.structure;
+package unit04.structure.sorting;
 
 import java.util.ArrayList;
 import java.util.Collections;

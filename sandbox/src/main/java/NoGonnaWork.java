@@ -2,6 +2,6 @@ public class NoGonnaWork {
 
     static void main() {
 
-        sasdfsadf
+      System.out.println("Hello World");
     }
 }

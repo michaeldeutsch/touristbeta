@@ -1,4 +1,4 @@
-package unit04.structure;
+package unit04.structure.sorting;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,22 +16,7 @@ public class Student implements Comparable<Student> {
     double gpa;
 
 
-    static void main() {
-        Student s = new Student("Hans", 111, 1.5);
-        Student s1 = new Student("Gretel", 111, 3.5);
-        Student s2 = new Student("Franz", 32, 5.5);
-
-        ArrayList<Student> students = new ArrayList<>();
-        students.add(s);
-        students.add(s1);
-        students.add(s2);
-
-        Collections.sort(students);
-        students.forEach(System.out::println);
-
-    }
-
-    @Override
+       @Override
     public int compareTo(Student o) {
 
         if(o.age == this.age){
