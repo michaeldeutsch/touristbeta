@@ -1,6 +1,6 @@
-package at.fhvie.hibernate.onetomany.dao;
+package unit08.hibernate.onetomany.dao;
 
-import at.fhvie.hibernate.onetomany.entities.Booking;
+import unit08.hibernate.onetomany.entities.Booking;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.List;

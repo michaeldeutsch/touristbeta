@@ -12,6 +12,7 @@ public class UserManagement {
                 .password("secret")
                 .role(UserRole.MASTER)
                 .build();
+
         dao.save(adminUser);
 
         System.out.println("Saved: " + adminUser);

@@ -1,4 +1,4 @@
-package unit08.readEmail;
+package unit08.email.readEmail;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

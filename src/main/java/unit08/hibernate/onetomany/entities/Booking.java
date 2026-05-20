@@ -1,5 +1,6 @@
-package at.fhvie.hibernate.onetomany.entities;
+package unit08.hibernate.onetomany.entities;
 
+import lombok.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,11 +15,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "om_bookings")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "hotel")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "booking_id")
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name = "guest_name", nullable = false, length = 120)
@@ -38,64 +45,10 @@ public class Booking {
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 
-    public Booking() {
-    }
-
     public Booking(String guestName, LocalDate checkIn, LocalDate checkOut, int numberOfGuests) {
         this.guestName = guestName;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.numberOfGuests = numberOfGuests;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getGuestName() {
-        return guestName;
-    }
-
-    public LocalDate getCheckIn() {
-        return checkIn;
-    }
-
-    public LocalDate getCheckOut() {
-        return checkOut;
-    }
-
-    public int getNumberOfGuests() {
-        return numberOfGuests;
-    }
-
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "id=" + id +
-                ", guestName='" + guestName + '\'' +
-                ", checkIn=" + checkIn +
-                ", checkOut=" + checkOut +
-                ", numberOfGuests=" + numberOfGuests +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Booking booking)) return false;
-        return id != null && Objects.equals(id, booking.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 }

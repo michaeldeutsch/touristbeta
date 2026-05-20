@@ -1,4 +1,4 @@
-package cardlayout_demo;
+package unit08.cardlayout_demo;
 
 import javax.swing.SwingUtilities;
 

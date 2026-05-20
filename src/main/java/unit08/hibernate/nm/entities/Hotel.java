@@ -1,5 +1,6 @@
-package at.fhvie.hibernate.nm.entities;
+package unit08.hibernate.nm.entities;
 
+import lombok.*;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,13 +15,19 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@Entity
+@Entity(name = "nm_Hotel")
 @Table(name = "nm_hotels")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "amenities")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "hotel_id")
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name = "hotel_name", nullable = false, length = 120)
@@ -39,28 +46,9 @@ public class Hotel {
     )
     private Set<Amenity> amenities = new HashSet<>();
 
-    public Hotel() {
-    }
-
     public Hotel(String name, String city) {
         this.name = name;
         this.city = city;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public Set<Amenity> getAmenities() {
-        return amenities;
     }
 
     public void addAmenity(Amenity amenity) {
@@ -71,27 +59,5 @@ public class Hotel {
     public void removeAmenity(Amenity amenity) {
         amenities.remove(amenity);
         amenity.getHotels().remove(this);
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", amenities=" + amenities +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Hotel hotel)) return false;
-        return id != null && Objects.equals(id, hotel.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 }

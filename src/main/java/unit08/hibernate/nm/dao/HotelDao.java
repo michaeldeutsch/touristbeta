@@ -1,7 +1,7 @@
-package at.fhvie.hibernate.nm.dao;
+package unit08.hibernate.nm.dao;
 
-import at.fhvie.hibernate.nm.entities.Amenity;
-import at.fhvie.hibernate.nm.entities.Hotel;
+import unit08.hibernate.nm.entities.Amenity;
+import unit08.hibernate.nm.entities.Hotel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.List;
@@ -26,7 +26,7 @@ public class HotelDao {
     public Hotel findById(Long id) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery(
-                    "select h from Hotel h left join fetch h.amenities where h.id = :id",
+                    "select h from nm_Hotel h left join fetch h.amenities where h.id = :id",
                     Hotel.class
             ).setParameter("id", id).uniqueResult();
         }
@@ -52,7 +52,7 @@ public class HotelDao {
     public List<Hotel> findAll() {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery(
-                    "select distinct h from Hotel h left join fetch h.amenities",
+                    "select distinct h from nm_Hotel h left join fetch h.amenities",
                     Hotel.class
             ).list();
         }

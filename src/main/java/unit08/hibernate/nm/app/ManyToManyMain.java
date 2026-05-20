@@ -1,16 +1,16 @@
-package at.fhvie.hibernate.nm.app;
+package unit08.hibernate.nm.app;
 
-import at.fhvie.hibernate.config.HibernateUtil;
-import at.fhvie.hibernate.nm.dao.AmenityDao;
-import at.fhvie.hibernate.nm.dao.HotelDao;
-import at.fhvie.hibernate.nm.entities.Amenity;
-import at.fhvie.hibernate.nm.entities.Hotel;
+import unit08.hibernate.HibernateUtil;
+import unit08.hibernate.nm.dao.AmenityDao;
+import unit08.hibernate.nm.dao.HotelDao;
+import unit08.hibernate.nm.entities.Amenity;
+import unit08.hibernate.nm.entities.Hotel;
 import org.hibernate.SessionFactory;
 
 public class ManyToManyMain {
 
     public static void main(String[] args) {
-        try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory(Hotel.class, Amenity.class)) {
+        try (SessionFactory sessionFactory = HibernateUtil.getSessionFactory()) {
             HotelDao hotelDao = new HotelDao(sessionFactory);
             AmenityDao amenityDao = new AmenityDao(sessionFactory);
 

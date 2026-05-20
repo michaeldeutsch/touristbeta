@@ -1,5 +1,6 @@
-package at.fhvie.hibernate.onetomany.entities;
+package unit08.hibernate.onetomany.entities;
 
+import lombok.*;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,13 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "om_Hotel")
 @Table(name = "om_hotels")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = "bookings")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "hotel_id")
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name = "hotel_name", nullable = false, length = 120)
@@ -33,28 +40,9 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booking> bookings = new ArrayList<>();
 
-    public Hotel() {
-    }
-
     public Hotel(String name, String city) {
         this.name = name;
         this.city = city;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
     }
 
     public void addBooking(Booking booking) {
@@ -65,27 +53,5 @@ public class Hotel {
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
         booking.setHotel(null);
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", bookings=" + bookings +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Hotel hotel)) return false;
-        return id != null && Objects.equals(id, hotel.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 }

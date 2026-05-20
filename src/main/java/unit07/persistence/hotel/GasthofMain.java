@@ -30,6 +30,10 @@ public class GasthofMain {
         findByName("Stüberl");
     }
 
+    /**
+     * authors: michael.deutsch
+     * @param term
+     */
     private static void findByName(String term ) {
         Transaction tx = null;
 

@@ -1,4 +1,4 @@
-package mcuc;
+package unit08.mcuc;
 
 import javax.swing.*;
 import java.awt.*;

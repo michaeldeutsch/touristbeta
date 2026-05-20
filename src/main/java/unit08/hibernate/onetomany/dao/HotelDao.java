@@ -1,7 +1,7 @@
-package at.fhvie.hibernate.onetomany.dao;
+package unit08.hibernate.onetomany.dao;
 
-import at.fhvie.hibernate.onetomany.entities.Booking;
-import at.fhvie.hibernate.onetomany.entities.Hotel;
+import unit08.hibernate.onetomany.entities.Booking;
+import unit08.hibernate.onetomany.entities.Hotel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.List;
@@ -26,7 +26,7 @@ public class HotelDao {
     public Hotel findById(Long id) {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery(
-                    "select h from Hotel h left join fetch h.bookings where h.id = :id",
+                    "select h from om_Hotel h left join fetch h.bookings where h.id = :id",
                     Hotel.class
             ).setParameter("id", id).uniqueResult();
         }
@@ -51,7 +51,7 @@ public class HotelDao {
     public List<Hotel> findAll() {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery(
-                    "select distinct h from Hotel h left join fetch h.bookings",
+                    "select distinct h from om_Hotel h left join fetch h.bookings",
                     Hotel.class
             ).list();
         }

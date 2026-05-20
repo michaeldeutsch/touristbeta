@@ -1,5 +1,6 @@
-package at.fhvie.hibernate.nm.entities;
+package unit08.hibernate.nm.entities;
 
+import lombok.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,11 +14,16 @@ import java.util.Set;
 
 @Entity
 @Table(name = "nm_amenities")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Amenity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "amenity_id")
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name = "amenity_name", nullable = false, unique = true, length = 80)
@@ -25,41 +31,15 @@ public class Amenity {
 
     // mappedBy zeigt: Die Join-Tabelle wird auf Hotel-Seite definiert.
     @ManyToMany(mappedBy = "amenities")
+    @ToString.Exclude
     private Set<Hotel> hotels = new HashSet<>();
-
-    public Amenity() {
-    }
 
     public Amenity(String name) {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Set<Hotel> getHotels() {
-        return hotels;
-    }
-
     @Override
     public String toString() {
         return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Amenity amenity)) return false;
-        return id != null && Objects.equals(id, amenity.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 }

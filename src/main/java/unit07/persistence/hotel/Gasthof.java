@@ -11,6 +11,8 @@ import lombok.*;
 @Entity
 public class Gasthof {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gasthofID;

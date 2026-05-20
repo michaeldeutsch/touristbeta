@@ -1,8 +1,11 @@
-package unit07.persistence.user;
+package unit08.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import unit07.persistence.person.PersonEntity;
+import unit07.persistence.user.UserEntity;
+import unit08.hibernate.nm.entities.Amenity;
+import unit08.hibernate.onetomany.entities.Booking;
 
 public class HibernateUtil {
 
@@ -21,6 +24,10 @@ public class HibernateUtil {
                     .configure()
                     .addAnnotatedClass(UserEntity.class)
                     .addAnnotatedClass(PersonEntity.class)
+                    .addAnnotatedClass(Amenity.class)
+                    .addAnnotatedClass(unit08.hibernate.nm.entities.Hotel.class)
+                    .addAnnotatedClass(Booking.class)
+                    .addAnnotatedClass(unit08.hibernate.onetomany.entities.Hotel.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("SessionFactory couldn't be created.");

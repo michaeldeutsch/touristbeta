@@ -1,17 +1,17 @@
-package at.fhvie.hibernate.onetomany.app;
+package unit08.hibernate.onetomany.app;
 
-import at.fhvie.hibernate.config.HibernateUtil;
-import at.fhvie.hibernate.onetomany.dao.BookingDao;
-import at.fhvie.hibernate.onetomany.dao.HotelDao;
-import at.fhvie.hibernate.onetomany.entities.Booking;
-import at.fhvie.hibernate.onetomany.entities.Hotel;
+import unit08.hibernate.HibernateUtil;
+import unit08.hibernate.onetomany.dao.BookingDao;
+import unit08.hibernate.onetomany.dao.HotelDao;
+import unit08.hibernate.onetomany.entities.Booking;
+import unit08.hibernate.onetomany.entities.Hotel;
 import org.hibernate.SessionFactory;
 import java.time.LocalDate;
 
 public class OneToManyMain {
 
     public static void main(String[] args) {
-        try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory(Hotel.class, Booking.class)) {
+        try (SessionFactory sessionFactory = HibernateUtil.getSessionFactory()) {
             HotelDao hotelDao = new HotelDao(sessionFactory);
             BookingDao bookingDao = new BookingDao(sessionFactory);
 

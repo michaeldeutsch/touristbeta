@@ -1,6 +1,6 @@
-package at.fhvie.hibernate.nm.dao;
+package unit08.hibernate.nm.dao;
 
-import at.fhvie.hibernate.nm.entities.Amenity;
+import unit08.hibernate.nm.entities.Amenity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.List;
