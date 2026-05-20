@@ -34,10 +34,19 @@ src
      │   │   └─ readFromFile
      │   ├─ unit03
      │   │   └─ Main.java (CSV Export)
-     │   └─ unit04
-     │       ├─ exercise (Hotel SQL Assignment)
-     │       ├─ gui (Swing Login)
-     │       └─ structure (Sets, Sorting)
+     │   ├─ unit04
+     │   │   ├─ exercise (Hotel SQL Assignment)
+     │   │   ├─ gui (Swing Login)
+     │   │   └─ structure (Sets, Sorting)
+     │   ├─ unit07
+     │   │   └─ persistence (Hibernate Setup)
+     │   └─ unit08
+     │       ├─ cardlayout_demo
+     │       ├─ designer (JFormDesigner)
+     │       ├─ email (Jakarta Mail)
+     │       ├─ hibernate (One-to-Many, Many-to-Many)
+     │       ├─ mcuc (Advanced Swing)
+     │       └─ pdf (Apache PDFBox)
      └─ resources
 ```
 
@@ -65,6 +74,14 @@ The repository covers the progress of the course with a focus on practical appli
 - **Focus:** Introduction to GUI development (Swing), advanced data structures (Sets), and sorting objects.
 - **Outcomes:** Simple Login GUI, implementation of `Comparable` for custom sorting, SQL export utility as a practical exercise.
 
+### Unit 07: Persistence with Hibernate
+- **Focus:** Introduction to ORM, Hibernate configuration, and DAO pattern.
+- **Outcomes:** Database connection to SQL Server, automatic table generation, and structured data access using Repositories.
+
+### Unit 08: Advanced GUI & External Integrations
+- **Focus:** Complex Layouts (CardLayout), GUI Designer, E-Mail/PDF integration, and Hibernate relationships.
+- **Outcomes:** Multi-page applications, automated UI generation, sending/reading E-Mails, PDF document creation, and mapping of complex database relationships.
+
 ---
 
 ## Technologies
@@ -78,6 +95,10 @@ The course uses the following technologies and libraries:
 - **Libraries:**
     - Lombok (Code simplification)
     - Java Swing (GUI)
+    - JFormDesigner (GUI Design)
+    - Hibernate (ORM)
+    - Jakarta Mail (E-Mail integration)
+    - Apache PDFBox (PDF creation)
     - Java Time API (Date & Time)
 
 ---

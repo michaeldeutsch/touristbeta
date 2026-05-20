@@ -25,6 +25,7 @@ This document serves as the technical documentation for the **TouristOffice** pr
 *   **v0.5:** Advanced GUI & JTables (Unit 05).
 *   **v0.6:** Event handling & Data transfer (Unit 06).
 *   **v0.7:** Database connection with Hibernate & SQL Server (Unit 07).
+*   **v0.8:** Advanced Hibernate (Relationships), GUI Designer, E-Mail & PDF Integration (Unit 08).
 
 ---
 
@@ -40,12 +41,12 @@ The system follows a **layered model** (N-Tier), focusing on the separation of u
     *   **Data Layer:** Hibernate ORM for mapping Java objects to SQL tables.
 
 ### Technologies and Frameworks
-*   **Language:** Java 23+
-*   **GUI:** Java Swing
+*   **Language:** Java 21+
+*   **GUI:** Java Swing & JFormDesigner
 *   **ORM:** Hibernate 6.6.3.Final / Jakarta Persistence 3.1.0
 *   **Build Tool:** Maven
 *   **Database:** Microsoft SQL Server (Remote)
-*   **Utilities:** Lombok 1.18.44, Apache Commons CSV
+*   **Utilities:** Lombok 1.18.38, Apache Commons CSV, Jakarta Mail 2.0.1, Apache PDFBox 3.0.7
 
 ### Architecture Diagrams
 
@@ -121,10 +122,11 @@ The connection is configured via `src/main/resources/hibernate.cfg.xml`.
 ### Data Model
 The project uses Hibernate for automatic table generation (`hbm2ddl.auto=update`).
 
-#### Best Practices & Optimizations (Unit 07)
-*   **Repository Pattern (DAO):** Introduction of DAO classes (e.g., `UserDao`) to separate data access from business logic.
+#### Best Practices & Optimizations (Unit 07 & 08)
+*   **Repository Pattern (DAO):** Introduction of DAO classes (e.g., `UserDao`, `HotelDao`) to separate data access from business logic.
 *   **Central Session Management:** Use of a central `HibernateUtil` to avoid redundancy.
 *   **JPA Mapping:** Use of standardized JPA annotations (`@Entity`, `@Table`, `@Column`, `@Enumerated`) for precise mapping.
+*   **Entity Relationships:** Implementation of `@OneToMany` (Hotel -> Booking) and `@ManyToMany` (Hotel <-> Amenity) mappings.
 *   **Separation of Concerns:** Externalization of Enums (e.g., `UserRole`) and helper classes into separate files.
 
 #### Key Entities:
@@ -146,4 +148,19 @@ erDiagram
         string password
         string role
     }
+    HOTEL {
+        long id PK
+        string name
+        string city
+    }
+    BOOKING {
+        long id PK
+        date booking_date
+    }
+    AMENITY {
+        long id PK
+        string name
+    }
+    HOTEL ||--o{ BOOKING : has
+    HOTEL }|--|{ AMENITY : offers
 ```
